@@ -3,7 +3,7 @@ package model;
 import java.util.UUID;
 
 public class Name {
-	private String nickname,id,type;
+private String nickname,id,type;
 	
 	public Name() {
 		

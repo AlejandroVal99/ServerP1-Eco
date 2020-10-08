@@ -30,25 +30,30 @@ public class Main extends PApplet implements OnMessageListener{
 	}
 	
 	public void draw() {
-		
+		background(255);
+		if(avatar != null) {
+			avatar.draw();
+		}
+				
 	}
 
 	@Override
 	public void OnNameReceived(Name name) {
-		// TODO Auto-generated method stub
+		System.out.println("Recibi nombre");
+		avatar = new Avatar(name.getNickname(), this);
 		
 	}
 
 	@Override
 	public void OnDirectionReceived(Direction direction) {
 		// TODO Auto-generated method stub
+		avatar.move(direction.getDirection());
 		
 	}
 
 	@Override
 	public void OnColorReceived(Colors color) {
-		// TODO Auto-generated method stub
-		
+		avatar.setColor(color.getR(),color.getG(),color.getB());		
 	}
 
 }
