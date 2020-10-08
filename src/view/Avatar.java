@@ -3,7 +3,8 @@ package view;
 import processing.core.PApplet;
 
 public class Avatar {
-	private int posx, posy,color,r,g,b;
+	private float nposx, nposy, posx, posy;
+	private int color,r,g,b;
 	private String nickname;
 	private PApplet app;
 
@@ -16,6 +17,8 @@ public class Avatar {
 		color = app.color(r,g,b);
 		posx = app.width / 2;
 		posy = app.height / 2;
+		nposx = app.width / 2;
+		nposy = app.height / 2;
 		
 	}
 
@@ -26,7 +29,7 @@ public class Avatar {
 			if (posx <= 0 || posx >= app.width) {
 
 			} else {
-				posx -= 2;
+				nposx = posx - 15;
 				
 			}
 
@@ -36,7 +39,7 @@ public class Avatar {
 			if (posx <= 0 || posx >= app.width) {
 
 			} else {
-				posx += 2;
+				nposx = posx + 15;
 			}
 
 			break;
@@ -44,14 +47,14 @@ public class Avatar {
 			if (posy <= 0 || posy >= app.height) {
 
 			} else {
-				posy += 2;
+				nposy = posy + 15;
 			}
 			break;
 		case 4: // move down
 			if (posy <= 0 || posy >= app.height) {
 
 			} else {
-				posy -= 2;
+				nposy = posy - 15;
 			}
 			break;
 
@@ -60,6 +63,8 @@ public class Avatar {
 
 	public void draw() {
 		app.fill(color);
+		posx = app.lerp(posx, nposx, (float) 0.1);
+		posy = app.lerp(posy,nposy,(float) 0.1);
 		app.ellipse(posx, posy, 50, 50);
 		app.text(nickname, posx - 25, posy + 40);
 	}
