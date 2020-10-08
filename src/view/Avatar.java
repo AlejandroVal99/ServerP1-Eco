@@ -10,12 +10,13 @@ public class Avatar {
 	public Avatar(String nickname, PApplet app) {
 		this.nickname = nickname;
 		this.app = app;
-		r = 255;
-		g = 255;
+		r = 0;
+		g = 0;
 		b = 0;
 		color = app.color(r,g,b);
 		posx = app.width / 2;
 		posy = app.height / 2;
+		
 	}
 
 	public void move(int direction) {
@@ -25,7 +26,8 @@ public class Avatar {
 			if (posx <= 0 || posx >= app.width) {
 
 			} else {
-				posx -= 3;
+				posx -= 2;
+				
 			}
 
 			break;
@@ -34,7 +36,7 @@ public class Avatar {
 			if (posx <= 0 || posx >= app.width) {
 
 			} else {
-				posx -= 3;
+				posx += 2;
 			}
 
 			break;
@@ -42,14 +44,14 @@ public class Avatar {
 			if (posy <= 0 || posy >= app.height) {
 
 			} else {
-				posy += 3;
+				posy += 2;
 			}
 			break;
 		case 4: // move down
 			if (posy <= 0 || posy >= app.height) {
 
 			} else {
-				posy -= 3;
+				posy -= 2;
 			}
 			break;
 
